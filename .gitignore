@@ -56,3 +56,4 @@ dkms.conf
 .obj/
 MBTI/x64/
 MBTI/Debug/
+x64/
