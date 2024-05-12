@@ -37,11 +37,13 @@ void sia_compCheck();
 int sih_shuffleQ();
 void sih_printQ();
 void sih_printMBTI();
+void jun_MBTIratio();
 
 int main() {
     sia_compCheck();
     sih_printQ();
     sih_printMBTI();
+    jun_MBTIratio();
     return 0;
 }
 
@@ -131,4 +133,22 @@ void sih_printMBTI()
 
     MBTI[4] = '\0';
     printf("당신의 MBTI는 %s입니다!",MBTI);
+}
+
+
+void jun_MBTIratio() {
+    double E = 0, I = 0, N = 0, S = 0, T = 0, F = 0, J = 0, P = 0;
+    E = sih_cnt[0];
+    I = 3 - sih_cnt[0];
+    N = sih_cnt[1];
+    S = 3 - sih_cnt[1];
+    T = sih_cnt[2];
+    F = 3 - sih_cnt[2];
+    J = sih_cnt[3];
+    P = 3 - sih_cnt[3];
+    printf("\n\n<MBTI 비율>\n");
+    printf("E 비율: %.1f%% I 비율: %.1f%%\n", E / 3 * 100, I / 3 * 100);
+    printf("N 비율: %.1f%% S 비율: %.1f%%\n", N / 3 * 100, S / 3 * 100);
+    printf("T 비율: %.1f%% F 비율: %.1f%%\n", T / 3 * 100, F / 3 * 100);
+    printf("J 비율: %.1f%% P 비율: %.1f%%\n", J / 3 * 100, P / 3 * 100);
 }
