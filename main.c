@@ -39,7 +39,7 @@ void sih_printQ();
 void sih_printMBTI();
 
 int main() {
-    //sia_compCheck();
+    sia_compCheck();
     sih_printQ();
     sih_printMBTI();
     return 0;
