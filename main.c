@@ -24,6 +24,11 @@ void sia_compCheck() {
     printf("두 번째 MBTI 유형을 입력하세요: ");
     scanf("%s", type2);
 
+    for (int i = 0; i < 4; i++) { // standardisation of input
+        if (type1[i] >= 'a' || type1[i] <= 'z') type1[i] -= 32;
+        if (type2[i] >= 'a' || type2[i] <= 'z') type2[i] -= 32;
+    }
+
     // MBTI 유형을 숫자 인덱스로 변환
     if (type1[0] == 'E') i += 8;
     if (type2[0] == 'E') j += 8;
