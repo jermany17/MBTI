@@ -11,6 +11,7 @@
 #define MBTI_NUM 16 // MBTI 갯수
 int sih_used[QUESTION_NUM] = { 0 };
 int sih_cnt[QUESTION_NUM / 3] = { 3,3,3,3 };
+char MBTI[5]; // MBTI 검사 결과 저장
 char sih_Q[QUESTION_NUM][100] = {
 
     "당신은 친구들과 약속잡는 것을 좋아하나요? (Y/N)",
@@ -54,7 +55,7 @@ const char sih_recommended_jobs[MBTI_NUM][101] = {
     "CEO, 변호사, 컨설턴트, 공학자, 경영자" // ENTJ
 };
 
-const char MBTI_TYPES[MBTI_NUM][5] = { // 16가지 MBTI 배열 생성(상수화 시킴)
+const char MBTI_TYPES[MBTI_NUM][5] = { // 16가지 MBTI 배열 생성(상수화 시킴) 
     "ISTJ",
     "ISFJ",
     "INFJ",
@@ -73,6 +74,11 @@ const char MBTI_TYPES[MBTI_NUM][5] = { // 16가지 MBTI 배열 생성(상수화 
     "ENTJ"
 }; 
 
+/*
+MBTI 별 항목 대응 시킬 수 있도록 MBTI_TYPE 배열 생성함
+다른 MBTI 별 추천 항목 넣을 때, 활용하면 좋을 듯
+*/
+
 void sih_recommendJob(char MBTI[5]);
 void sia_compCheck();
 int sih_shuffleQ();
@@ -82,8 +88,8 @@ void jun_MBTIratio(); // MBTI 퍼센트 결과
 
 int main() {
     sia_compCheck();
-    sih_printQ();
-    sih_printMBTI();
+    sih_printQ(); // MBTI 질문
+    sih_printMBTI(); // MBTI 결과
     jun_MBTIratio(); // MBTI 퍼센트 결과
     return 0;
 }
@@ -128,11 +134,11 @@ void sih_printQ()
 
     for (int i = 0; i < QUESTION_NUM; i++)
     {
-        int idx = sih_shuffleQ();
+        int idx = sih_shuffleQ(); // 무작위로 질문 출력
         printf("%d. %s\n", i + 1, sih_Q[idx]);
         scanf(" %c", &answer);
         getchar();
-        if (answer == 'N') { sih_cnt[idx / 3] -= 1; }
+        if (answer == 'N') { sih_cnt[idx / 3] -= 1; } // 각 4가지 항목 별 개수 계산
     }
 }
 
@@ -149,7 +155,7 @@ int sih_shuffleQ()
 
 void sih_printMBTI()
 {
-    char MBTI[5];
+   
 
     if (sih_cnt[0] >= 2) {
         MBTI[0] = 'E';
@@ -201,9 +207,10 @@ void sih_recommendJob(char MBTI[5])
     int recommend_index = 0;
     for (int i = 0; i < MBTI_NUM; i++)
     {
-        if (strcmp(MBTI, MBTI_TYPES[i])==0)
+        if (strcmp(MBTI, MBTI_TYPES[i])==0) 
         {
-            recommend_index = i;
+            recommend_index = i; // 추천 직업 인덱스 저장
+            break;
         }
     }
 
