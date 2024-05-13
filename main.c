@@ -8,6 +8,7 @@
 #include "sia_compTable.h"
 
 #define QUESTION_NUM 12 // 질문의 총 개수
+#define MBTI_NUM 16 // MBTI 갯수
 int sih_used[QUESTION_NUM] = { 0 };
 int sih_cnt[QUESTION_NUM / 3] = { 3,3,3,3 };
 char sih_Q[QUESTION_NUM][100] = {
@@ -33,6 +34,46 @@ char sih_Q[QUESTION_NUM][100] = {
     // 9~11번은 J/P (Y일 때 J임)
 
 };
+
+const char sih_recommended_jobs[MBTI_NUM][101] = {
+    "회계사, 경찰관, 시스템 분석가, 감사관, 법관", // ISTJ
+    "간호사, 교사, 사회복지사, 행정직, 식품 서비스 관리자", // ISFJ
+    "상담사, 작가, 예술가, 심리학자, 대학 교수", // INFJ
+    "CEO, 컨설턴트, 연구원, 변호사, 건축가", // INTJ
+    "엔지니어, 기술자, 경주 드라이버, 파이로테크닉스, 경호원", // ISTP
+    "예술가, 디자이너, 음악가, 화가, 사진가", // ISFP
+    "저널리스트, 사회사업가, 작가, 심리학자, 예술치료사", // INFP
+    "과학자, 프로그래머, 철학자, 소프트웨어 엔지니어, 시스템 분석가", // INTP
+    "스포츠 선수, 판매원, 경영자, 소방관, 파티 계획자", // ESTP
+    "배우, 음식 서비스 직원, 이벤트 플래너, 판매원, 스타일리스트", // ESFP
+    "마케터, 교육자, 커뮤니케이션 전문가, 엔터테이너, 사회사업가", // ENFP
+    "변호사, 경영 컨설턴트, 엔지니어, 마케터, 신제품 개발자", // ENTP
+    "경영자, 군인, 경찰관, 은행원, 프로젝트 관리자", // ESTJ
+    "커뮤니티 서비스 직원, 공동체 조직가, 판매원, 교사, 은행원", // ESFJ
+    "교육자, 상담사, 사회사업가, 의료 전문가, 식음료 관리자", // ENFJ
+    "CEO, 변호사, 컨설턴트, 공학자, 경영자" // ENTJ
+};
+
+const char MBTI_TYPES[MBTI_NUM][5] = { // 16가지 MBTI 배열 생성(상수화 시킴)
+    "ISTJ",
+    "ISFJ",
+    "INFJ",
+    "INTJ",
+    "ISTP",
+    "ISFP",
+    "INFP",
+    "INTP",
+    "ESTP",
+    "ESFP",
+    "ENFP",
+    "ENTP",
+    "ESTJ",
+    "ESFJ",
+    "ENFJ",
+    "ENTJ"
+}; 
+
+void sih_recommendJob(char MBTI[5]);
 void sia_compCheck();
 int sih_shuffleQ();
 void sih_printQ();
@@ -133,6 +174,8 @@ void sih_printMBTI()
 
     MBTI[4] = '\0';
     printf("당신의 MBTI는 %s입니다!",MBTI);
+
+    sih_recommendJob(MBTI); // 여기다 추천직업 출력 넣었어요.
 }
 
 
@@ -151,4 +194,21 @@ void jun_MBTIratio() { // MBTI 퍼센트 결과
     printf("N 비율: %.1f%% S 비율: %.1f%%\n", N / 3 * 100, S / 3 * 100); // 퍼센트 출력
     printf("T 비율: %.1f%% F 비율: %.1f%%\n", T / 3 * 100, F / 3 * 100); // 퍼센트 출력
     printf("J 비율: %.1f%% P 비율: %.1f%%\n", J / 3 * 100, P / 3 * 100); // 퍼센트 출력
+}
+
+void sih_recommendJob(char MBTI[5])
+{
+    int recommend_index = 0;
+    for (int i = 0; i < MBTI_NUM; i++)
+    {
+        if (strcmp(MBTI, MBTI_TYPES[i])==0)
+        {
+            recommend_index = i;
+        }
+    }
+
+    printf("\n");
+    printf("\n당신에게 추천할 직업은...!\n");
+    printf("%s\n", sih_recommended_jobs[recommend_index]);
+
 }
