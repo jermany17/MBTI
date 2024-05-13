@@ -138,7 +138,7 @@ void sih_printQ()
         printf("%d. %s\n", i + 1, sih_Q[idx]);
         scanf(" %c", &answer);
         getchar();
-        if (answer == 'N') { sih_cnt[idx / 3] -= 1; } // 각 4가지 항목 별 개수 계산
+        if (answer == 'N' || answer == 'n') { sih_cnt[idx / 3] -= 1; } // 각 4가지 항목 별 개수 계산
     }
 }
 
