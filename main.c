@@ -86,11 +86,13 @@ int sih_shuffleQ();
 void sih_printQ();
 void sih_printMBTI();
 void jun_MBTIratio(); // MBTI 퍼센트 결과
+void jun_people(char MBTI[5]); // 같은 MBTI 연예인 출력 
 
 int main() {
     sia_compCheck();
     sih_printQ(); // MBTI 질문
     sih_printMBTI(); // MBTI 결과
+    jun_people(MBTI);// 같은 MBTI 연예인 출력
     jun_MBTIratio(); // MBTI 퍼센트 결과
     return 0;
 }
@@ -196,7 +198,7 @@ void jun_MBTIratio() { // MBTI 퍼센트 결과
     F = 3 - sih_cnt[2]; // F 대답 개수
     J = sih_cnt[3];     // J 대답 개수
     P = 3 - sih_cnt[3]; // P 대답 개수
-    printf("\n\n<MBTI 비율>\n");
+    printf("\n<MBTI 비율>\n");
     printf("E 비율: %.1f%% I 비율: %.1f%%\n", E / 3 * 100, I / 3 * 100); // 퍼센트 출력
     printf("N 비율: %.1f%% S 비율: %.1f%%\n", N / 3 * 100, S / 3 * 100); // 퍼센트 출력
     printf("T 비율: %.1f%% F 비율: %.1f%%\n", T / 3 * 100, F / 3 * 100); // 퍼센트 출력
@@ -218,5 +220,23 @@ void sih_recommendJob(char MBTI[5])
     printf("\n");
     printf("\n당신에게 추천할 직업은...!\n");
     printf("%s\n", sih_recommended_jobs[recommend_index]);
+
+}
+
+void jun_people(char MBTI[5])
+{
+    int celebrity_index = 0;
+    for (int i = 0; i < MBTI_NUM; i++)
+    {
+        if (strcmp(MBTI, MBTI_TYPES[i]) == 0)
+        {
+            celebrity_index = i; // 추천 직업 인덱스 저장
+            break;
+        }
+    }
+
+    printf("\n");
+    printf("\n같은 MBTI 연예인은 ?!\n");
+    printf("%s\n", jun_celebrity[celebrity_index]);
 
 }

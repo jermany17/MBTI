@@ -23,5 +23,8 @@
     <ClInclude Include="sia_compTable.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="jun_celebrity.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
