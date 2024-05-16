@@ -6,6 +6,7 @@
 #include <time.h>
 #include <conio.h>
 #include "sia_compTable.h"
+#include "jun_celebrity.h"
 
 #define QUESTION_NUM 12 // 질문의 총 개수
 #define MBTI_NUM 16 // MBTI 갯수
