@@ -253,7 +253,7 @@ void jun_people(char MBTI[5])
     {
         if (strcmp(MBTI, MBTI_TYPES[i]) == 0)
         {
-            celebrity_index = i; // 추천 직업 인덱스 저장
+            celebrity_index = i; // 같은 MBTI 연예인 인덱스 저장
             break;
         }
     }
