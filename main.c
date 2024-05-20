@@ -133,16 +133,39 @@ void sia_compCheck() {
 void sih_printQ()
 {
     char answer;
-    printf("\n질문에 Y(예) 또는 N(아니오)로 답해주세요\n");
-
-    for (int i = 0; i < QUESTION_NUM; i++)
+printf("\n질문에 Y(예) 또는 N(아니오)로 답해주세요\n");
+int idx = -1;
+for (int i = 0; i < QUESTION_NUM; i++)
+{
+    if(idx==-1) // 예외처리(잘못된 입력일 경우 같은 질문 출력)
+     idx = sih_shuffleQ(); // 무작위로 질문 출력
+    printf("%d. %s\n", i + 1, sih_Q[idx]);
+    scanf(" %c", &answer);
+    getchar();
+    switch (answer)
     {
-        int idx = sih_shuffleQ(); // 무작위로 질문 출력
-        printf("%d. %s\n", i + 1, sih_Q[idx]);
-        scanf(" %c", &answer);
-        getchar();
-        if (answer == 'N' || answer == 'n') { sih_cnt[idx / 3] -= 1; } // 각 4가지 항목 별 개수 계산
+    case 'N':
+        sih_cnt[idx / 3] -= 1;
+        idx = -1;
+        break;
+    case 'n':
+        sih_cnt[idx / 3] -= 1;
+        idx = -1;
+        break;
+
+    case 'Y':
+        idx = -1;
+        break;
+    case 'y':
+        idx = -1;
+        break;
+
+    default:
+        printf("잘못된 입력입니다. 다시 입력해주세요\n");
+        i--; // 같은 질문 반복
+        continue;
     }
+}
 }
 
 int sih_shuffleQ()
