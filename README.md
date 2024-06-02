@@ -3,15 +3,15 @@
 - 게임1: snake 게임
 - 게임2: tetris 게임
 - 게임3: tictactoe 게임 
-
-## 프로젝트 실행 방법
+---
+### 프로젝트 실행 방법
 1. <https://github.com/jermany17/SoftwareArcade>에 접속한다
 2. <> Code를 누른 후 DownLoad ZIP을 눌러 압축 파일을 다운로드 한다
 3. 다운로드 한 폴더의 압축을 푼다
 4. Visual Studio를 실행한 후 "프로젝트 또는 솔루션 열기"를 누른다
 5. 압축을 푼 폴더안의 .sln 파일을 선택해 "열기"를 누른다
 5. Ctrl + F5 키를 눌러 코드를 실행한다.
-
+---
 ### 협업 규칙 
 - GitHub Flow 전략 사용 
 
